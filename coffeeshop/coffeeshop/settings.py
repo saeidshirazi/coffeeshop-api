@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'computed_property',
     'rest_framework',
     'django_jalali',
+    'api',
+    'django_filters',
+
 
 
 

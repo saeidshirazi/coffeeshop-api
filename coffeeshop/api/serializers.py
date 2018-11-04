@@ -39,9 +39,19 @@ class Comment2UsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment2Us
         fields =('id','created','updated_at','comment','p_id') 
-
+###################################################################
+class ContactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Contact
+        fields=('id','url_tel','url_ins','phone_number')
+###################################################################        
 class Chef_SuggestSerialize(serializers.ModelSerializer):
     class Meta:
         model = Chef_Suggest
         fields =('id','created','updated_at','p_suggest') 
+###################################################################        
+class ReportedCommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=ReportedComment
+        fields=('id','created','reported')        
                   

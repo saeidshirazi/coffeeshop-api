@@ -56,7 +56,11 @@ class ProductCommentViewSet(viewsets.ModelViewSet):
     serializer_class = ProdctCommentSerializer
     filter_backends=(filters.DjangoFilterBackend,)
     filter_class =CommentFilter
-
+    
+#########################################################    
+class ReportedCommentViewSet(viewsets.ModelViewSet):
+    queryset = ReportedComment.objects.all()
+    serializer_class = ReportedCommentSerializer
 #########################################################
 class Comment2UsViewSet(viewsets.ModelViewSet):
     queryset = Comment2Us.objects.all()
@@ -65,7 +69,10 @@ class Comment2UsViewSet(viewsets.ModelViewSet):
 class ChefSuggestViewSet(viewsets.ModelViewSet):
     queryset = Chef_Suggest.objects.all()
     serializer_class = Chef_SuggestSerialize
-
+#########################################################
+class ContactUsViewSet(viewsets.ModelViewSet):
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
     
 #########################################################
 def custom_exception_handler(exc):

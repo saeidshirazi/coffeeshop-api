@@ -20,7 +20,7 @@ class ImgFilter(filters.FilterSet):
 class QmFilter(filters.FilterSet):
     class Meta:
         model = RatingAPi
-        fields = ['quality_rate','price_rate','product_qm','total','category_name']
+        fields = ['quality_rate','price_rate','product_qm','total']
 
 
 ###################################################################

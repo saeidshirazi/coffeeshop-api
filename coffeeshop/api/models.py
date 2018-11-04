@@ -3,7 +3,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 from model_utils import Choices
 import computed_property
 from django_jalali.db import models as jmodels
-
+###################################################################
 # Create your models here.
 
 class Person_Register(models.Model):
@@ -14,7 +14,7 @@ class Person_Register(models.Model):
      def __str__(self):
          return self.name
 
-
+###################################################################
 class Category(models.Model):
     created=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
@@ -22,7 +22,7 @@ class Category(models.Model):
     cat_name = models.CharField(max_length=100, default='')
     def __str__(self):
          return self.cat_name
-
+###################################################################
 class Product(models.Model):
     created=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
@@ -32,7 +32,7 @@ class Product(models.Model):
     price = models.IntegerField()
     description = models.TextField(blank=True, null=True, default='')
     mainpic=models.ImageField(upload_to='media', null=True)
-    
+###################################################################    
 class Chef_Suggest(models.Model):
     created=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
@@ -40,7 +40,7 @@ class Chef_Suggest(models.Model):
     def __str__(self):
         return str(self.p_suggest)
 
-
+###################################################################
 class Images(models.Model):
     created=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
@@ -48,7 +48,7 @@ class Images(models.Model):
     image = models.ImageField(upload_to='media', null=True)
     def __str__(self):
         return str(self.product_image)    
-
+###################################################################
 class IsUpdate(models.Model):
     created=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
@@ -57,6 +57,7 @@ class IsUpdate(models.Model):
     url =  models.URLField(default="https://telegram.me/CyberSTM", max_length=200)
     def __str__(self):
         return self.version
+###################################################################        
 class ProductComment(models.Model):
     created=jmodels.jDateField(auto_now_add=True,blank=True)
     updated_at=jmodels.jDateField(auto_now_add=True,blank=True)
@@ -66,6 +67,15 @@ class ProductComment(models.Model):
     cm =models.TextField(blank=True, null=True, default='')
     def __str__(self):
         return str(self.usercm_id)
+###################################################################
+class ReportedComment(models.Model):
+    created=jmodels.jDateField(auto_now_add=True,blank=True)
+    updated_at=jmodels.jDateField(auto_now_add=True,blank=True)
+    reported = models.ForeignKey(ProductComment, on_delete=models.CASCADE,default='1',related_name='reportcm_id')
+    def __str__(self):
+        return str(self.reported)        
+                
+###################################################################        
 class Comment2Us(models.Model):
     created=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
@@ -73,7 +83,16 @@ class Comment2Us(models.Model):
     p_id=models.ForeignKey(Person_Register, on_delete=models.CASCADE,default='1',related_name='p_id')
     def __str__(self):
         return str(self.p_id)
+###################################################################
+class Contact(models.Model):
+    created=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now_add=True)
+    url_tel =  models.URLField(default="https://t.me/mahana_app", max_length=200)
+    url_ins =  models.URLField(default="www.instagram.com/ego_official2018", max_length=200)
+    phone_number = PhoneNumberField(default='')
 
+
+###################################################################
 class RatingAPi(models.Model):
     created=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
