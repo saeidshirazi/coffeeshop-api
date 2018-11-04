@@ -18,6 +18,9 @@ router.register(r'Productcomments', views.ProductCommentViewSet)
 router.register(r'Comment2Us', views.Comment2UsViewSet)
 router.register(r'Reportedcomments', views.ReportedCommentViewSet)
 router.register(r'ChefSuggest', views.ChefSuggestViewSet)
+router.register(r'UserProfile', views.UserProfileViewSet)
+router.register(r'MainItem', views.MainItemViewSet,'MainItemList')
+
 #router.register(r'QualityApi', views.QMViewSet)
 #router.register(r'QQApi', views.QQViewSet,'QQApi')
 ######################################################

@@ -16,6 +16,7 @@ from rest_framework.mixins import UpdateModelMixin
 from django.db.models import Avg
 from rest_framework.views import exception_handler
 import django_filters.rest_framework
+from rest_framework.exceptions import APIException
 
 #########################################################
 class UserViewSet(viewsets.ModelViewSet):
@@ -23,8 +24,10 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = PersonSerializer
 
 #########################################################
-
-
+class UserProfileViewSet(viewsets.ModelViewSet):
+    queryset = UserProfile.objects.all()
+    serializer_class = UserProfileSerializer
+#########################################################
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
@@ -45,7 +48,10 @@ class ImageViewSet(viewsets.ModelViewSet):
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer            
-
+#########################################################
+class MainItemViewSet(viewsets.ModelViewSet):
+    queryset = MainItem.objects.all()
+    serializer_class = MainItemSerializer    
 #########################################################
 class IsUpdateViewSet(viewsets.ModelViewSet):
     queryset = IsUpdate.objects.all()

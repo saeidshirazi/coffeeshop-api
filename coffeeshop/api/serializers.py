@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 from .models import *
 from rest_framework import serializers
 import datetime
@@ -12,7 +14,17 @@ class PersonSerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model=Product
-        fields = ('id','product_name','description','catid','quantity','price','mainpic')
+        fields = ('id','product_name','description','cat_main_id','price','mainpic')
+###################################################################
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=UserProfile
+        fields = ('id','user_id','favorites','address','sex')
+###################################################################
+class MainItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=MainItem
+        fields = ('id','catid','photo','item_name')
 ###################################################################
 class ImagesSerializer(serializers.ModelSerializer):
     class Meta:

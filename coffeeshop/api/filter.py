@@ -8,7 +8,7 @@ class ProductFilter(filters.FilterSet):
     product_name = django_filters.CharFilter(lookup_expr='contains')
     class Meta:
         model = Product
-        fields = ['catid','product_name']
+        fields = ['cat_main_id','product_name']
 
 ###################################################################
 class ImgFilter(filters.FilterSet):

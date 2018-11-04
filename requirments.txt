@@ -1,0 +1,16 @@
+Babel==2.6.0
+Django==2.1.2
+django-computed-property==0.2.2
+django-cors-headers==2.4.0
+django-debug-toolbar==1.10.1
+django-filter==2.0.0
+django-jalali==3.1.0
+django-model-utils==3.1.2
+django-phonenumber-field==2.1.0
+djangorestframework==3.9.0
+jdatetime==3.0.2
+Markdown==3.0.1
+phonenumbers==8.9.16
+pytz==2018.6
+six==1.11.0
+sqlparse==0.2.4

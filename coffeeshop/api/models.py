@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from model_utils import Choices
@@ -23,16 +25,47 @@ class Category(models.Model):
     def __str__(self):
          return self.cat_name
 ###################################################################
+class MainItem(models.Model):
+    created=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now_add=True)
+    catid =  models.ForeignKey(Category, on_delete=models.CASCADE,default='coffeeshop',related_name='catid')
+    photo = models.ImageField(upload_to='media', null=True)
+    item_name=models.CharField(max_length=50, default='')
+    def __str__(self):
+        return self.item_name
+    
+###################################################################
 class Product(models.Model):
     created=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
+    cat_main_id=models.ForeignKey(MainItem, on_delete=models.CASCADE,default='1',related_name='cat_main_id')
     product_name= models.CharField(max_length=100, default='')
-    catid =  models.ForeignKey(Category, on_delete=models.CASCADE,default='coffeeshop',related_name='catid')
-    quantity = models.IntegerField()
     price = models.IntegerField()
     description = models.TextField(blank=True, null=True, default='')
     mainpic=models.ImageField(upload_to='media', null=True)
-###################################################################    
+    def __str__(self):
+        return self.product_name
+    
+###################################################################   
+class UserProfile(models.Model):
+    SEX_CHOICES = (
+        ('F', 'Female',),
+        ('M', 'Male',),
+        ('U', 'Unsure',),
+    )
+    created=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now_add=True)
+    user_id= models.ForeignKey(Person_Register, on_delete=models.CASCADE,default='',related_name='user_id')
+    favorites = models.ManyToManyField(Product, related_name='favorited_by')
+    address = models.TextField(blank=True, null=True, default='')
+    sex = models.CharField(
+        max_length=1,
+        choices=SEX_CHOICES,
+    )
+    
+
+
+###################################################################
 class Chef_Suggest(models.Model):
     created=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)

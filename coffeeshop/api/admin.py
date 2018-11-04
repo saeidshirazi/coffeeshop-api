@@ -17,7 +17,12 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 
-myModels=[Person_Register,Category,Chef_Suggest,IsUpdate,Comment2Us,RatingAPi,Images]
+myModels=[
+          Person_Register,Category,Chef_Suggest,IsUpdate,
+          Comment2Us,RatingAPi,Images,UserProfile,MainItem,
+          ReportedComment,Contact,ProductComment
+          
+         ]
 
 
 admin.site.register(Product,ProductAdmin)
